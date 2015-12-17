@@ -17,12 +17,12 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
-            
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value="com.ptit.bookecommerce.activity.view.SearchResultsActivity" />
-            
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +46,11 @@
         <activity
             android:name="com.ptit.bookecommerce.activity.view.BookDetailsActivity"
             android:label="@string/title_activity_book_details"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustPan" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.ptit.bookecommerce.activity.view.SearchResultsActivity" />
         </activity>
         <activity
             android:name="com.ptit.bookecommerce.activity.view.ProfileActivity"
@@ -57,9 +61,10 @@
             android:name="com.ptit.bookecommerce.activity.view.OrderHistoryActivity"
             android:label="@string/title_activity_order_history" >
         </activity>
-        
+
         <!-- Search results activity -->
-        <activity android:name="com.ptit.bookecommerce.activity.view.SearchResultsActivity"
+        <activity
+            android:name="com.ptit.bookecommerce.activity.view.SearchResultsActivity"
             android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

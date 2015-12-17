@@ -1,7 +1,7 @@
 package com.ptit.bookecommerce.utils;
 
 public class Constants {
-	public final static String URL_SERVER = "http://192.168.1.105:8000";
+	public final static String URL_SERVER = "http://192.168.1.101:8000";
 	
 
 	public static final String URL_GENRE = URL_SERVER + "/api/genre";
@@ -21,14 +21,22 @@ public class Constants {
 	
 	public static final String LOGIN_SUCCESS = "Login Success";
 	public static final String REGISTER_SUCCESS = "Register Success";
+	public static final String CHANGE_PROFILE_SUCCESS = "Change Profile Successfully";
 	public static final String CHECKOUT_SUCCESS = "Checkout Success";
-	public static final String REQUIRE_LOGIN = "You Have To Login";
+	public static final String REQUIRE_LOGIN = "You Have To Login";	
 	
 	public static final String SEARCH_TYPE_TITLE = "book_title";
 	
 	public static final int FRAGMENT_PROFILE = 1;
 	public static final int FRAGMENT_HOME = 0;
 	public static final int FRAGMENT_CART = 2;
+	public static final int FRAGMENT_LOGIN = 3;
+	public static final int FRAGMENT_LOGOUT = 4;
+	public static final int FRAGMENT_CHECKOUT = 5;
+	public static final String MESSAGE_CHANGE_VIEW = "message view";
+	public static final String MESSAGE = "message";
+	public static final String MESSAGE_FRAGMENT = "fragment";
+	public static final String MESSAGE_RES = "res";
 	
 	public static final String[] qtyValues = {"0","1","2","3","4","5","6","7","8","9","10"};
 }

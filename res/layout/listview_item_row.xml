@@ -2,16 +2,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
     android:padding="10dp" >
  
     <ImageView
         android:id="@+id/imageViewIcon"
-        android:layout_width="wrap_content"
+        android:layout_width="40sp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:paddingRight="10dp" />
+        android:paddingRight="10dp" 
+        android:src="@drawable/ic_action_login"/>
  
     <TextView
         android:id="@+id/textViewName"
@@ -19,9 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/imageViewIcon"
-        android:paddingRight="10dp"
+        android:paddingRight="10sp"
         android:text="Folder name here."
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff" 
+        android:textSize="18sp"/>
  
 </RelativeLayout>

@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,8 +31,8 @@ import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;
 import com.ptit.bookecommerce.utils.MyDialog;
 
-public class ProfileFrament extends Fragment implements OnClickListener {
-	public final static String TAG = ProfileFrament.class.getSimpleName();
+public class LoginFragment extends Fragment implements OnClickListener {
+	public final static String TAG = LoginFragment.class.getSimpleName();
 	private View view;
 	private MyDialog dialog;
 
@@ -66,11 +65,11 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 	}
 
-	public static ProfileFrament newInstance() {
-		return new ProfileFrament();
+	public static LoginFragment newInstance() {
+		return new LoginFragment();
 	}
 
 	@Override
@@ -78,63 +77,9 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		this.inflater = inflater;
-		if (Customer.customerLogin == null) {
-			view = inflater.inflate(R.layout.activity_login, null);
-			initLoginComponents(view);
-		} else {
-			Log.e("Customer LOGIn IN PROFILE FRAGMENT",
-					Customer.customerLogin.getId() + "-");
-			Log.e("Customer LOGIn IN PROFILE FRAGMENT NAME",
-					Customer.customerLogin.getFullName() + "-");
-			view = inflater.inflate(R.layout.activity_profile, null);
-			initProfileComponents(view);
-		}
-
+		view = inflater.inflate(R.layout.activity_login, null);
+		initLoginComponents(view);
 		return view;
-	}
-
-	private void initProfileComponents(View view) {
-		// TODO Auto-generated method stub
-		edFullname = (EditText) view.findViewById(R.id.edFullname);
-		edEmail = (EditText) view.findViewById(R.id.edEmail);
-		edPhone = (EditText) view.findViewById(R.id.edPhone);
-		edCity = (EditText) view.findViewById(R.id.edCity);
-		edDistrict = (EditText) view.findViewById(R.id.edDistrict);
-		edWard = (EditText) view.findViewById(R.id.edWard);
-		edStreetno = (EditText) view.findViewById(R.id.edStreetno);
-		edPostal = (EditText) view.findViewById(R.id.edPostal);
-		btnChangeProfile = (Button) view.findViewById(R.id.btnChangeProfile);
-
-		if (Customer.customerLogin != null) {
-			Customer c = Customer.customerLogin;
-			if (c.getFullName() != null && !c.getFullName().equals(""))
-				edFullname.setText(c.getFullName());
-
-			if (c.getEmail() != null && !c.getEmail().equals(""))
-				edEmail.setText(c.getEmail());
-
-			if (c.getPhone() != null && !c.getPhone().equals(""))
-				edPhone.setText(c.getPhone());
-
-			if (c.getCity() != null && !c.getCity().equals(""))
-				edCity.setText(c.getCity());
-
-			if (c.getDistrict() != null && !c.getDistrict().equals(""))
-				edDistrict.setText(c.getDistrict());
-
-			if (c.getWard() != null && !c.getWard().equals(""))
-				edWard.setText(c.getWard());
-
-			if (c.getStreetNumber() != null && !c.getStreetNumber().equals(""))
-				edStreetno.setText(c.getStreetNumber());
-
-			if (c.getPostalCode() != null && !c.getPostalCode().equals(""))
-				edPostal.setText(c.getPostalCode());
-		} else {
-			Log.e("CUSTOMER LOGIN NULL", "YES");
-		}
-
-		btnChangeProfile.setOnClickListener(this);
 	}
 
 	private void initLoginComponents(View view) {
@@ -150,10 +95,10 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 		tvRegister = (TextView) view.findViewById(R.id.tvRegister);
 		tvLogin = (TextView) view.findViewById(R.id.tvLogin);
 
-		btnLogin.setOnClickListener(ProfileFrament.this);
-		btnRegister.setOnClickListener(ProfileFrament.this);
-		tvRegister.setOnClickListener(ProfileFrament.this);
-		tvLogin.setOnClickListener(ProfileFrament.this);
+		btnLogin.setOnClickListener(LoginFragment.this);
+		btnRegister.setOnClickListener(LoginFragment.this);
+		tvRegister.setOnClickListener(LoginFragment.this);
+		tvLogin.setOnClickListener(LoginFragment.this);
 	}
 
 	@SuppressLint("ShowToast")
@@ -199,20 +144,6 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 			tvRegister.setVisibility(View.VISIBLE);
 			tvLogin.setVisibility(View.GONE);
 			edRePass.setVisibility(View.GONE);
-		} else if (v == btnChangeProfile) {
-			RequestParams params = new RequestParams();
-			params.put("customer_id", Customer.customerLogin.getId() + "");
-			params.put("fullname", edFullname.getText().toString());
-			params.put("email", edEmail.getText().toString());
-			params.put("phone", edPhone.getText().toString());
-			params.put("city", edCity.getText().toString());
-			params.put("district", edDistrict.getText().toString());
-			params.put("ward", edWard.getText().toString());
-			params.put("street_number", edStreetno.getText().toString());
-			params.put("postal_code", edPostal.getText().toString());
-						
-			Log.e("PROFILE PARAMS", params.toString());
-			sendData(params, Constants.URL_CUSTOMER_PROFILE);
 		}
 	}
 
@@ -283,7 +214,13 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 								MainActivity.class);
 						Bundle bundle = new Bundle();
 						bundle.putString("res", Constants.LOGIN_SUCCESS);
-						intent.putExtra("message", bundle);
+						if (MainActivity.friendlyUrl != -1) {
+							bundle.putInt(Constants.MESSAGE_FRAGMENT,
+									MainActivity.friendlyUrl);
+							Log.e("friendlyUrl", MainActivity.friendlyUrl + "");
+							MainActivity.friendlyUrl = -1;
+						}
+						intent.putExtra(Constants.MESSAGE, bundle);
 						startActivity(intent);
 					}
 
@@ -329,19 +266,7 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 				try {
 					JSONObject obj = new JSONObject(new JSONObject(response)
 							.getString("customer_register"));
-					if (Customer.customerLogin == null) {
-						int id = obj.getInt("id");
-
-						Customer.customerLogin = new Customer();
-						Customer.customerLogin.setId(id);
-						Intent intent = new Intent(view.getContext(),
-								MainActivity.class);
-						Bundle bundle = new Bundle();
-						bundle.putString("res", Constants.REGISTER_SUCCESS);
-						bundle.putInt("fragment", Constants.FRAGMENT_PROFILE);
-						intent.putExtra("message", bundle);
-						startActivity(intent);
-					}
+					showMessage("Register successfully");
 
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -351,53 +276,11 @@ public class ProfileFrament extends Fragment implements OnClickListener {
 			}
 		});
 	}
-
-	public void sendData(RequestParams params, String url) {
-		// Make RESTful webservice call using AsyncHttpClient object
-		AsyncHttpClient client = new AsyncHttpClient();
-		client.post(url, params, new AsyncHttpResponseHandler() {
-
-			@Override
-			public void onStart() {
-				// TODO Auto-generated method stub
-				super.onStart();
-			}
-
-			@Override
-			public void onFinish() {
-				// TODO Auto-generated method stub
-				super.onFinish();
-			}
-
-			@Override
-			public void onFailure(int statusCode, Throwable error,
-					String content) {
-				// TODO Auto-generated method stub
-
-				Log.e("OUTPUT CAT CONNECT", "Fail : " + content);				
-				showMessage("Change profile failed!");
-			}
-
-			@Override
-			public void onSuccess(String response) {
-				// TODO Auto-generated method stub
-				Log.e("SUCCESS PROFILE", "Success : " + response);				
-				Customer.customerLogin.setCity(edCity.getText().toString());
-				Customer.customerLogin.setDistrict(edDistrict.getText().toString());
-				Customer.customerLogin.setEmail(edEmail.getText().toString());
-				Customer.customerLogin.setFullName(edFullname.getText().toString());
-				Customer.customerLogin.setPhone(edPhone.getText().toString());
-				Customer.customerLogin.setPostalCode(edPostal.getText().toString());
-				Customer.customerLogin.setStreetNumber(edStreetno.getText().toString());
-				Customer.customerLogin.setWard(edWard.getText().toString());
-				showMessage("Change profile successfully!");
-			}
-		});
-
-	}
+	
 
 	private void showMessage(String msg) {
 		// TODO Auto-generated method stub
-		Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+		Toast.makeText(getActivity().getApplicationContext(), msg,
+				Toast.LENGTH_LONG).show();
 	}
 }

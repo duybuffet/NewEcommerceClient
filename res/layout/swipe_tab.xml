@@ -8,18 +8,20 @@
     <GridView
         android:id="@+id/listEbooks"
         android:layout_width="match_parent"
+        android:layout_marginRight="9sp"
         android:layout_height="0dp"
-        android:layout_weight="9.2"
+        android:layout_weight="9.9"
         android:numColumns="3" >
     </GridView>
 
     <Button
         android:id="@+id/load"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:background="@android:color/holo_blue_bright"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:background="#54A4BD"
         android:text="Load..."
+        android:textColor="#99fEfEfE"
         android:weightSum="10" >
     </Button>
 

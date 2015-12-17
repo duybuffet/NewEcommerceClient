@@ -5,15 +5,20 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +27,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.paulusworld.drawernavigationtabs.MainActivity;
 import com.paulusworld.drawernavigationtabs.R;
+import com.paulusworld.drawernavigationtabs.TabbedActivity;
 import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.utils.Constants;
 import com.ptit.bookecommerce.utils.Device;
@@ -45,14 +51,14 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 			value = extras.getString("book_id");
 			Log.d("Value", value);
 		}
-		
-		// get action bar   
-        ActionBar actionBar = getActionBar();
- 
-        // Enabling Up / Back navigation
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Book Details");
-		
+
+		// get action bar
+		ActionBar actionBar = getActionBar();
+
+		// Enabling Up / Back navigation
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setTitle("Book Details");
+
 		btnAddToCart = (Button) findViewById(R.id.btn_add_to_cart);
 		tvTitle = (TextView) findViewById(R.id.book_title);
 		tvPrice = (TextView) findViewById(R.id.book_price);
@@ -70,21 +76,50 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.book_details, menu);
-		return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.activity_main_actions, menu);
+
+		// Associate searchable configuration with the SearchView
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+		case R.id.action_search:
+			// search action
+			return true;
+		case R.id.action_cart:
+			// cart click
+			navigateTo(2);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void navigateTo(int position) {
+		Log.e("POSTITION", position + "");
+		switch (position) {
+		case 2:
+			/*
+			 * getSupportFragmentManager() .beginTransaction()
+			 * .add(R.id.content_frame, ItemOne.newInstance(),
+			 * ItemOne.TAG).commit();
+			 */
+			Intent intent = new Intent(this,
+					MainActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putInt(Constants.MESSAGE_CHANGE_VIEW, Constants.FRAGMENT_CART);
+			intent.putExtra(Constants.MESSAGE_CHANGE_VIEW, bundle);
+			startActivity(intent);
+			break;
+		}
 	}
 
 	public void getData(RequestParams params, String url) {
@@ -111,7 +146,8 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 				try {
 					// JSON Object
 					JSONObject obj = new JSONObject(response);
-					String url = Constants.URL_BOOK_IMAGE + obj.getString("cover_url").toString();
+					String url = Constants.URL_BOOK_IMAGE
+							+ obj.getString("cover_url").toString();
 					int id = obj.getInt("id");
 					String title = obj.getString("title").toString();
 					String description = obj.getString("description")
@@ -151,7 +187,8 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (v == btnAddToCart) {
 			MainActivity.cart.addToCart(b);
-			Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_LONG)
+					.show();
 		}
 	}
 }

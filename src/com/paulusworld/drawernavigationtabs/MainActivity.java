@@ -15,21 +15,27 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ptit.bookecommerce.activity.adapter.DrawerItemCustomAdapter;
 import com.ptit.bookecommerce.activity.adapter.ObjectDrawerItem;
 import com.ptit.bookecommerce.activity.view.CartFragment;
-import com.ptit.bookecommerce.activity.view.ProfileFrament;
+import com.ptit.bookecommerce.activity.view.CheckoutActivity;
+import com.ptit.bookecommerce.activity.view.LoginFragment;
+import com.ptit.bookecommerce.activity.view.ProfileFragment;
 import com.ptit.bookecommerce.model.Cart;
+import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;
 
 @SuppressLint("NewApi")
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 	public static Cart cart = new Cart();
@@ -42,6 +48,12 @@ public class MainActivity extends FragmentActivity {
 	private CharSequence mTitle;
 	private ObjectDrawerItem[] mDrawerItmes;
 
+	// Display profile
+	private RelativeLayout profileBox;
+	private TextView tvUsername;
+
+	public static int friendlyUrl = -1;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,40 +61,11 @@ public class MainActivity extends FragmentActivity {
 
 		mTitle = mDrawerTitle = getTitle();
 
-		String[] loadedItems = getResources().getStringArray(
-				R.array.drawer_titles);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-		// icon for listview item
-		mDrawerItmes = new ObjectDrawerItem[4];
-
-		mDrawerItmes[0] = new ObjectDrawerItem(R.drawable.ic_action_home,
-				loadedItems[0]);
-		mDrawerItmes[1] = new ObjectDrawerItem(R.drawable.ic_action_person,
-				loadedItems[1]);
-		mDrawerItmes[2] = new ObjectDrawerItem(R.drawable.ic_action_about,
-				loadedItems[2]);
-		mDrawerItmes[3] = new ObjectDrawerItem(R.drawable.ic_action_settings,
-				loadedItems[3]);
-
-		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,
-				R.layout.listview_item_row, mDrawerItmes);
-
-		// set a custom shadow that overlays the main content when the drawer
-		// opens
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-				GravityCompat.START);
-
-		// Add items to the ListView
-		// mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-		// R.layout.drawer_list_item, mDrawerItmes));
-
-		mDrawerList.setAdapter(adapter);
-
-		// Set the OnItemClickListener so something happens when a
-		// user clicks on an item.
-		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		setUpProfile();
+		setUpNavigation();
 
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -104,16 +87,89 @@ public class MainActivity extends FragmentActivity {
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		handleRenderLayout(savedInstanceState);
+
+	}
+
+	private void setUpProfile() {
+		// TODO Auto-generated method stub
+		Customer customer = null;
+		profileBox = (RelativeLayout) findViewById(R.id.profileBox);
+		tvUsername = (TextView) findViewById(R.id.tv_userame);
+
+		if ((customer = Customer.customerLogin) != null) {
+			if (!customer.getFullName().equals("")) {
+				tvUsername.setText(customer.getFullName());
+			} else {
+				tvUsername.setText("Click to edit name");
+			}
+		} else {
+			tvUsername.setText("Not yet login");
+		}
+
+		profileBox.setOnClickListener(this);
+
+	}
+
+	private void setUpNavigation() {
+		// TODO Auto-generated method stub
+		// icon for listview item
+		String[] loadedItems = getResources().getStringArray(
+				R.array.drawer_titles);
+
+		mDrawerItmes = new ObjectDrawerItem[5];
+
+		mDrawerItmes[0] = new ObjectDrawerItem(R.drawable.ic_action_home,
+				loadedItems[0]);
+		mDrawerItmes[1] = new ObjectDrawerItem(R.drawable.ic_action_about,
+				loadedItems[1]);
+		mDrawerItmes[2] = new ObjectDrawerItem(R.drawable.ic_action_help,
+				loadedItems[2]);
+		mDrawerItmes[3] = new ObjectDrawerItem(R.drawable.ic_action_settings,
+				loadedItems[3]);
+		if (Customer.customerLogin == null) {
+			mDrawerItmes[4] = new ObjectDrawerItem(R.drawable.ic_action_login,
+					loadedItems[4]);
+		} else {
+			mDrawerItmes[4] = new ObjectDrawerItem(R.drawable.ic_action_logout,
+					loadedItems[5]);
+		}
+
+		DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,
+				R.layout.listview_item_row, mDrawerItmes);
+
+		// set a custom shadow that overlays the main content when the drawer
+		// opens
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+				GravityCompat.START);
+
+		// Add items to the ListView
+		// mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+		// R.layout.drawer_list_item, mDrawerItmes));
+
+		mDrawerList.setAdapter(adapter);
+
+		// Set the OnItemClickListener so something happens when a
+		// user clicks on an item.
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+	}
+
+	private void handleRenderLayout(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		// Set the default content area to item 0
 		// when the app opens for the first time
 
-		int fragment = 0;
+		int fragment = Constants.FRAGMENT_HOME;
 		Intent callerIntent = getIntent();
 		Bundle extras = callerIntent.getExtras();
 		if (extras != null) {
-			if (extras.containsKey("message")) {
-				Bundle receivedData = callerIntent.getBundleExtra("message");
-				String res = receivedData.getString("res");
+			if (extras.containsKey(Constants.MESSAGE)) {
+				Bundle receivedData = callerIntent
+						.getBundleExtra(Constants.MESSAGE);
+				String res = receivedData.getString(Constants.MESSAGE_RES);
+				if (receivedData.containsKey(Constants.MESSAGE_FRAGMENT)) {
+					fragment = receivedData.getInt(Constants.MESSAGE_FRAGMENT);
+				}
 
 				switch (res) {
 				case Constants.LOGIN_SUCCESS:
@@ -127,23 +183,31 @@ public class MainActivity extends FragmentActivity {
 				case Constants.CHECKOUT_SUCCESS:
 					showMessage("Place order successfully! We will contact you soon!");
 					break;
+					
+				case Constants.CHANGE_PROFILE_SUCCESS:
+					showMessage(Constants.CHANGE_PROFILE_SUCCESS);
+					break;
 
 				default:
 					break;
 				}
+			} else if (extras.containsKey(Constants.MESSAGE_CHANGE_VIEW)) {
+				Bundle receivedData = callerIntent
+						.getBundleExtra(Constants.MESSAGE_CHANGE_VIEW);
+				fragment = receivedData.getInt(Constants.MESSAGE_CHANGE_VIEW);
 			}
 
-			if (extras.containsKey("fragment")) {
+			if (extras.containsKey(Constants.MESSAGE_FRAGMENT)) {
 				Bundle receivedFragment = callerIntent
-						.getBundleExtra("fragment");
-				fragment = receivedFragment.getInt("fragment");
+						.getBundleExtra(Constants.MESSAGE_FRAGMENT);
+				fragment = receivedFragment.getInt(Constants.MESSAGE_FRAGMENT);
+				Log.e("fragment friendlyUrl", fragment + "");
 			}
 		}
 
 		if (savedInstanceState == null) {
 			navigateTo(fragment);
 		}
-
 	}
 
 	private void showMessage(String string) {
@@ -167,7 +231,7 @@ public class MainActivity extends FragmentActivity {
 				return true;
 			case R.id.action_cart:
 				// cart click
-				navigateTo(2);
+				navigateTo(Constants.FRAGMENT_CART);
 				return true;
 			}
 		}
@@ -190,7 +254,7 @@ public class MainActivity extends FragmentActivity {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -210,17 +274,22 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			if (position < 2) {
+			if (position < 1) {
 				navigateTo(position);
+			} else if (position == 4) {
+				if (Customer.customerLogin != null) {
+					navigateTo(Constants.FRAGMENT_LOGOUT);
+				} else {
+					Log.e("Navigate to", "Login");
+					navigateTo(Constants.FRAGMENT_LOGIN);
+				}
 			}
 		}
 	}
 
-	private void navigateTo(int position) {
-		Log.v(TAG, "List View Item: " + position);
-
-		switch (position) {
-		case 0:
+	private void navigateTo(int fragmentType) {
+		switch (fragmentType) {
+		case Constants.FRAGMENT_HOME:
 			/*
 			 * getSupportFragmentManager() .beginTransaction()
 			 * .add(R.id.content_frame, ItemOne.newInstance(),
@@ -231,18 +300,37 @@ public class MainActivity extends FragmentActivity {
 					.replace(R.id.content_frame, TabbedActivity.newInstance(),
 							TabbedActivity.TAG).commit();
 			break;
-		case 1:
+		case Constants.FRAGMENT_PROFILE:
 			getSupportFragmentManager()
 					.beginTransaction()
-					.replace(R.id.content_frame, ProfileFrament.newInstance(),
-							ProfileFrament.TAG).commit();
+					.replace(R.id.content_frame, ProfileFragment.newInstance(),
+							ProfileFragment.TAG).commit();
 			break;
 
-		case 2:
+		case Constants.FRAGMENT_CART:
 			getSupportFragmentManager()
 					.beginTransaction()
 					.replace(R.id.content_frame, CartFragment.newInstance(),
 							CartFragment.TAG).commit();
+			break;
+
+		case Constants.FRAGMENT_LOGIN:
+			getSupportFragmentManager()
+					.beginTransaction()
+					.replace(R.id.content_frame, LoginFragment.newInstance(),
+							LoginFragment.TAG).commit();
+			break;
+
+		case Constants.FRAGMENT_LOGOUT:
+			Customer.customerLogin = null;
+			setUpNavigation();
+			setUpProfile();
+			navigateTo(Constants.FRAGMENT_HOME);
+			break;
+
+		case Constants.FRAGMENT_CHECKOUT:
+			Intent i = new Intent(this, CheckoutActivity.class);
+			startActivity(i);
 			break;
 		}
 	}
@@ -253,5 +341,14 @@ public class MainActivity extends FragmentActivity {
 		getActionBar().setTitle(mTitle);
 	}
 
-	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v == profileBox) {
+			if (Customer.customerLogin != null) {
+				navigateTo(Constants.FRAGMENT_PROFILE);
+			}
+		}
+	}
+
 }

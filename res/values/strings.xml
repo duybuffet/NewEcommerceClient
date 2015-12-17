@@ -12,10 +12,12 @@
     <string name="title_activity_book_details">BookDetailsActivity</string>
 
     <string-array name="drawer_titles">
-        <item>Home</item>
-        <item>Profile</item>
+        <item>Home</item>        
         <item>About</item>
+        <item>Help</item>
         <item>Setting</item>
+        <item>Login</item>
+        <item>Logout</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>

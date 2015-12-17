@@ -27,6 +27,7 @@ import com.ptit.bookecommerce.activity.adapter.CartItemsArrayAdapter;
 import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.model.Cart;
 import com.ptit.bookecommerce.model.Customer;
+import com.ptit.bookecommerce.utils.Constants;
 
 public class CartFragment extends Fragment implements View.OnClickListener {
 	public final static String TAG = CartFragment.class.getSimpleName();
@@ -96,10 +97,10 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 			if (MainActivity.cart.getListItems().size() == 0) {
 				Toast.makeText(getActivity(), "Your cart is still empty. Go back and choose some stuffs", Toast.LENGTH_SHORT).show();
 			} else {
-				if (Customer.customerLogin == null) {
-					Log.e("CART FRAGEMNT BTN_CHECKOUT", "Not login yet");
+				if (Customer.customerLogin == null) {					
 					Toast.makeText(getActivity(), "You must login first to checkout!", Toast.LENGTH_SHORT).show();
-					Log.e("CART FRAGEMNT BTN_CHECKOUT", "showed toast");
+					MainActivity.friendlyUrl = Constants.FRAGMENT_CHECKOUT;
+					Log.e("friendlyUrl", MainActivity.friendlyUrl + "");
 				} else {
 					Intent i = new Intent(view.getContext(), CheckoutActivity.class);
 					startActivity(i);
