@@ -17,8 +17,7 @@ import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.paulusworld.drawernavigationtabs.MainActivity;
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;
 

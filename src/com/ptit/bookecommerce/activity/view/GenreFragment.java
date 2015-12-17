@@ -21,7 +21,7 @@ import android.widget.ListView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 import com.ptit.bookecommerce.activity.adapter.GenreArrayAdapter;
 import com.ptit.bookecommerce.model.Genre;
 import com.ptit.bookecommerce.utils.Constants;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.paulusworld.drawernavigationtabs"
+    package="com.ptit.bookecommerce"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.ptit.bookecommerce.activity.view.MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan" >
             <meta-data
@@ -30,23 +30,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TabbedActivity"
+            android:name="com.ptit.bookecommerce.activity.view.TabbedActivity"
             android:label="@string/title_activity_tabbed" >
         </activity>
         <activity
             android:name="com.ptit.bookecommerce.activity.view.BooksByGenreActivity"
             android:label="@string/title_activity_books_by_genre"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.ptit.bookecommerce.activity.view.MainActivity" >
         </activity>
         <activity
             android:name="com.ptit.bookecommerce.activity.view.CheckoutActivity"
             android:label="@string/title_activity_checkout"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.ptit.bookecommerce.activity.view.MainActivity" >
         </activity>
         <activity
             android:name="com.ptit.bookecommerce.activity.view.BookDetailsActivity"
             android:label="@string/title_activity_book_details"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.ptit.bookecommerce.activity.view.MainActivity"
             android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.app.default_searchable"
@@ -55,7 +55,7 @@
         <activity
             android:name="com.ptit.bookecommerce.activity.view.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.ptit.bookecommerce.activity.view.MainActivity" >
         </activity>
         <activity
             android:name="com.ptit.bookecommerce.activity.view.OrderHistoryActivity"
@@ -65,7 +65,7 @@
         <!-- Search results activity -->
         <activity
             android:name="com.ptit.bookecommerce.activity.view.SearchResultsActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.ptit.bookecommerce.activity.view.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

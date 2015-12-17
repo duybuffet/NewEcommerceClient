@@ -1,4 +1,4 @@
-package com.paulusworld.drawernavigationtabs;
+package com.ptit.bookecommerce.activity.view;
 
 import android.annotation.SuppressLint;
 import android.app.SearchManager;
@@ -24,12 +24,15 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ptit.bookecommerce.R;
+import com.ptit.bookecommerce.R.array;
+import com.ptit.bookecommerce.R.drawable;
+import com.ptit.bookecommerce.R.id;
+import com.ptit.bookecommerce.R.layout;
+import com.ptit.bookecommerce.R.menu;
+import com.ptit.bookecommerce.R.string;
 import com.ptit.bookecommerce.activity.adapter.DrawerItemCustomAdapter;
 import com.ptit.bookecommerce.activity.adapter.ObjectDrawerItem;
-import com.ptit.bookecommerce.activity.view.CartFragment;
-import com.ptit.bookecommerce.activity.view.CheckoutActivity;
-import com.ptit.bookecommerce.activity.view.LoginFragment;
-import com.ptit.bookecommerce.activity.view.ProfileFragment;
 import com.ptit.bookecommerce.model.Cart;
 import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;

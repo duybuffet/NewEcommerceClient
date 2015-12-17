@@ -15,9 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.paulusworld.drawernavigationtabs.MainActivity;
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 import com.ptit.bookecommerce.activity.view.CartFragment;
+import com.ptit.bookecommerce.activity.view.MainActivity;
 import com.ptit.bookecommerce.model.LineItem;
 import com.ptit.bookecommerce.utils.Constants;
 

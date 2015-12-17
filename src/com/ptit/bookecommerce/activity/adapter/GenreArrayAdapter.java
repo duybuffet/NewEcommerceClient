@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 import com.ptit.bookecommerce.model.Genre;
 import com.squareup.picasso.Picasso;
 

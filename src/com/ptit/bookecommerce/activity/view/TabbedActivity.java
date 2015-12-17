@@ -1,4 +1,4 @@
-package com.paulusworld.drawernavigationtabs;
+package com.ptit.bookecommerce.activity.view;
 
 import java.util.Locale;
 
@@ -12,9 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ptit.bookecommerce.activity.view.GenreFragment;
-import com.ptit.bookecommerce.activity.view.ListBookFragment;
-import com.ptit.bookecommerce.activity.view.RecommendFragment;
+import com.ptit.bookecommerce.R;
+import com.ptit.bookecommerce.R.id;
+import com.ptit.bookecommerce.R.layout;
+import com.ptit.bookecommerce.R.string;
 
 public class TabbedActivity extends Fragment {
 

@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
 	 

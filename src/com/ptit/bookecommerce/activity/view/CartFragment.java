@@ -21,8 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.paulusworld.drawernavigationtabs.MainActivity;
-import com.paulusworld.drawernavigationtabs.R;
+import com.ptit.bookecommerce.R;
 import com.ptit.bookecommerce.activity.adapter.CartItemsArrayAdapter;
 import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.model.Cart;
