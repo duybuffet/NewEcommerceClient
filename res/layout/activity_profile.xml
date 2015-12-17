@@ -1,0 +1,235 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D5EEEB"
+    android:orientation="vertical"
+    tools:context="com.user.infor.ChangePasswordActivity" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="PROFILE"
+                android:textColor="#2F7588"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Fullname : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edFullname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Fullname"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:inputType="textPersonName"  />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Email : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Phone : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edPhone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Phone"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="City : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edCity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="City"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="District : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edDistrict"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="District"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Ward : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edWard"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Ward"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Street and no : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edStreetno"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Street and no"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="5sp"
+                android:text="Postal code : "
+                android:textColor="#2F7588"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edPostal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/edittext"
+                android:gravity="center_horizontal"
+                android:hint="Postal Code"
+                android:padding="6sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:inputType="textPostalAddress" />
+
+            <Button
+                android:id="@+id/btnChangeProfile"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="15sp"
+                android:layout_weight="1"
+                android:background="@drawable/nice_button"
+                android:gravity="center"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="Change Profile"
+                android:textStyle="bold" 
+                android:textColor="#fff"
+                android:layout_marginBottom="15sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

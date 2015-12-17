@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Book Ecommerce</string>
+    <string name="search_hint">Enter book title</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_request">RequestActivity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_chapters">ChaptersActivity</string>
+    <string name="title_activity_books_by_genre">BooksByGenreActivity</string>
+    <string name="title_activity_book_details">BookDetailsActivity</string>
+
+    <string-array name="drawer_titles">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>About</item>
+        <item>Setting</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_item_one">ItemOne</string>
+    <string name="title_section1">All Books</string>
+    <string name="title_section2">New Books</string>
+    <string name="title_section3">Recommendations</string>
+    <string name="title_section4">Genres</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="title_activity_checkout">CheckoutActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_order_history">OrderHistoryActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
+
+</resources>

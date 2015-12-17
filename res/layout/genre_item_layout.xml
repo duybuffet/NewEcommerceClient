@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:layout_marginBottom="15dp"
+    android:background="#FFFFFF">
+    <ImageView android:id="@+id/ivGenreImage"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_launcher"/>
+	<TextView android:id="@+id/tvGenreName"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:text="1. Kinh dị (169)"
+	    android:layout_gravity="center_vertical"
+	    android:gravity="center_vertical"
+	    android:paddingLeft="5dp"/>
+</LinearLayout>

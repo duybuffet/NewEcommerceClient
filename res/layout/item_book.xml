@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:weightSum="5" >
+
+    <ImageView
+        android:id="@+id/book_cover"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="3.5"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/book_title"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="0.75"
+        android:gravity="center"
+        android:text="Hello 123"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/book_item_price_discount"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="0.75"
+        android:gravity="center"
+        android:text="Price: $69 - Discount: -20%"
+        android:textSize="12sp" />
+
+</LinearLayout>

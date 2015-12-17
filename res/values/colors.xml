@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color1">#DEDEDE</color>
+    <color name="color2">#ea5265</color>
+    <color name="color3">#f4b61a</color>
+    <color name="color4">#008300</color>
+    <color name="color5"> #008000</color>
+    <color name="NiceButtonStartColor">#4AA02C</color>
+    <color name="NiceButtonEndColor">#348017</color>
+    <color name="NiceButtonDisabledStartColor">#565051</color>
+    <color name="NiceButtonDisabledEndColor">#736F6E</color>
+    <color name="NiceButtonBorderColor">#254117</color>
+    <color name="ToggleStartColor">#FFF700</color>
+    <color name="ToggleEndColor">#C8D814</color>
+    <color name="ToggleDisabledStartColor">#565051</color>
+    <color name="ToggleDisabledEndColor">#736F6E</color>
+    <color name="ToggleBorderColor">#254117</color>
+    <color name="ToggleOffStartColor">#DCD1D1</color>
+    <color name="ToggleOffEndColor">#E2D2D2</color>
+    <color name="ToggleOffDisabledStartColor">#565051</color>
+    <color name="ToggleOffDisabledEndColor">#736F6E</color>
+    <color name="ToggleOffBorderColor">#254117</color>
+    
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+
+</resources>
