@@ -1,4 +1,8 @@
-package com.ptit.bookecommerce.activity.view;
+package com.ptit.bookecommerce.activity.adapter;
+
+import com.ptit.bookecommerce.activity.view.GenreFragment;
+import com.ptit.bookecommerce.activity.view.ListBookFragment;
+import com.ptit.bookecommerce.utils.Constants;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,17 +22,17 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
 		switch (index) {
 		case 0:
 			fragment = new ListBookFragment();
-			bundle.putString("type", "all");
+			bundle.putString("type", Constants.TAB_ALL);
 			fragment.setArguments(bundle);
 			break;
 		case 1:
 			fragment = new ListBookFragment();
-			bundle.putString("type", "new");
+			bundle.putString("type", Constants.TAB_NEW);
 			fragment.setArguments(bundle);
 			break;
 		case 2:
 			fragment = new ListBookFragment();
-			bundle.putString("type", "recommendation");
+			bundle.putString("type", Constants.TAB_RECOMMEND);
 			fragment.setArguments(bundle);
 			break;
 		case 3:

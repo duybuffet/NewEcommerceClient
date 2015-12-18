@@ -1,7 +1,7 @@
 package com.ptit.bookecommerce.utils;
 
 public class Constants {
-	public final static String URL_SERVER = "http://192.168.1.101:8000";
+	public final static String URL_SERVER = "http://192.168.1.103:8000";
 	
 
 	public static final String URL_GENRE = URL_SERVER + "/api/genre";
@@ -33,6 +33,9 @@ public class Constants {
 	public static final int FRAGMENT_LOGIN = 3;
 	public static final int FRAGMENT_LOGOUT = 4;
 	public static final int FRAGMENT_CHECKOUT = 5;
+	public static final String TAB_ALL = "all";
+	public static final String TAB_NEW = "new";
+	public static final String TAB_RECOMMEND = "recommendation";
 	public static final String MESSAGE_CHANGE_VIEW = "message view";
 	public static final String MESSAGE = "message";
 	public static final String MESSAGE_FRAGMENT = "fragment";

@@ -10,12 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ptit.bookecommerce.R;
-import com.ptit.bookecommerce.R.id;
-import com.ptit.bookecommerce.R.layout;
-import com.ptit.bookecommerce.R.string;
+import com.ptit.bookecommerce.utils.Constants;
 
 public class TabbedActivity extends Fragment {
 
@@ -75,23 +72,23 @@ public class TabbedActivity extends Fragment {
 			// below) with the page number as its lone argument.
 			Fragment fragment = new ListBookFragment();
 			Bundle args = new Bundle();
-			args.putString("type", "all");
+			args.putString("type", Constants.TAB_ALL);
 			fragment.setArguments(args);
 			
 			switch (position) {
 			case 0:
 				fragment = new ListBookFragment();
-				args.putString("type", "all");
+				args.putString("type", Constants.TAB_ALL);
 				fragment.setArguments(args);
 				break;
 			case 1:
 				fragment = new ListBookFragment();
-				args.putString("type", "new");
+				args.putString("type", Constants.TAB_NEW);
 				fragment.setArguments(args);
 				break;
 			case 2:
 				fragment = new RecommendFragment();
-				args.putString("type", "recommendation");
+				args.putString("type", Constants.TAB_RECOMMEND);
 				fragment.setArguments(args);
 				break;
 				

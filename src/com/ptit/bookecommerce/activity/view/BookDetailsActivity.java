@@ -95,25 +95,19 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 			return true;
 		case R.id.action_cart:
 			// cart click
-			navigateTo(2);
+			navigateTo(Constants.FRAGMENT_CART);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	private void navigateTo(int position) {
-		Log.e("POSTITION", position + "");
 		switch (position) {
-		case 2:
-			/*
-			 * getSupportFragmentManager() .beginTransaction()
-			 * .add(R.id.content_frame, ItemOne.newInstance(),
-			 * ItemOne.TAG).commit();
-			 */
-			Intent intent = new Intent(this,
-					MainActivity.class);
+		case Constants.FRAGMENT_CART:
+			Intent intent = new Intent(this, MainActivity.class);
 			Bundle bundle = new Bundle();
-			bundle.putInt(Constants.MESSAGE_CHANGE_VIEW, Constants.FRAGMENT_CART);
+			bundle.putInt(Constants.MESSAGE_CHANGE_VIEW,
+					Constants.FRAGMENT_CART);
 			intent.putExtra(Constants.MESSAGE_CHANGE_VIEW, bundle);
 			startActivity(intent);
 			break;
@@ -148,8 +142,24 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 							+ obj.getString("cover_url").toString();
 					int id = obj.getInt("id");
 					String title = obj.getString("title").toString();
-					String description = obj.getString("description")
-							.toString();
+					String description = "";
+					if (!obj.getString("author").equals("")) {
+						description += "Author: " + obj.getString("author")
+								+ "\n";
+					}
+
+					if (!obj.getString("genre").equals("")) {
+						description += "Genre: " + obj.getString("genre")
+								+ "\n";
+					}
+					
+					if (!obj.getString("publisher").equals("")) {
+						description += "Publisher: " + obj.getString("publisher")
+								+ "\n";
+					}
+
+					description += "==============================\n"
+							+ obj.getString("description").toString();
 					String isbn = obj.getString("isbn").toString();
 					Float price = Float.parseFloat(obj.getString("price")
 							.toString());
@@ -185,7 +195,7 @@ public class BookDetailsActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (v == btnAddToCart) {
 			MainActivity.cart.addToCart(b);
-			Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_LONG)
+			Toast.makeText(this, "Add to cart successfully", Toast.LENGTH_SHORT)
 					.show();
 		}
 	}

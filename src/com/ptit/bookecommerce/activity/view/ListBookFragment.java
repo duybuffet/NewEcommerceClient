@@ -24,14 +24,12 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.ptit.bookecommerce.R;
-import com.ptit.bookecommerce.activity.adapter.HomeAdapter;
 import com.ptit.bookecommerce.activity.adapter.ListBookAdapter;
 import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.utils.Constants;
 import com.ptit.bookecommerce.utils.MyDialog;
 
 public class ListBookFragment extends Fragment implements OnClickListener {
-	HomeAdapter adapter;
 	GridView gripView;
 	View view;
 	MyDialog myDialog = new MyDialog();
@@ -59,15 +57,15 @@ public class ListBookFragment extends Fragment implements OnClickListener {
 		gripView = (GridView) view.findViewById(R.id.listEbooks);
 		
 		switch (type) {
-		case "all":
+		case Constants.TAB_ALL:
 			url = Constants.URL_BOOKS_ALL;
 			break;
 
-		case "new":
+		case Constants.TAB_NEW:
 			url = Constants.URL_BOOKS_NEW;
 			break;
 
-		case "recommendation":
+		case Constants.TAB_RECOMMEND:
 			url = Constants.URL_BOOKS_RECOMMENDATION;
 			break;
 

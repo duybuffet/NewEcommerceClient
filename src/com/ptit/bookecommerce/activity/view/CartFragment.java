@@ -33,7 +33,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 	private Button btnCheckout;
 	private View view;
 	public static TextView totalAmount, itemCount;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -57,8 +57,6 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 
 	private void initComponents() {
 		// TODO Auto-generated method stub
-		MainActivity activity = (MainActivity) getActivity();
-
 		TextView itemText = (TextView) view.findViewById(R.id.item_text);
 		itemCount = (TextView) view.findViewById(R.id.item_count);
 		totalAmount = (TextView) view.findViewById(R.id.total_amount);
@@ -66,16 +64,15 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 		ListView lv1 = (ListView) view.findViewById(R.id.listView1);
 		TextView cartEmpty = (TextView) view.findViewById(R.id.cart_empty);
 
-		if (MainActivity.cart.getListItems().size() == 0 || MainActivity.cart.getListItems() == null) {
+		if (MainActivity.cart.getListItems().size() == 0
+				|| MainActivity.cart.getListItems() == null) {
 			itemText.setVisibility(view.INVISIBLE);
 			itemCount.setVisibility(view.INVISIBLE);
 			totalAmount.setVisibility(view.INVISIBLE);
 			btnCheckout.setVisibility(view.INVISIBLE);
 			lv1.setVisibility(view.INVISIBLE);
 			cartEmpty.setVisibility(view.VISIBLE);
-		}
-
-		else {
+		} else {
 			itemText.setVisibility(view.VISIBLE);
 			itemCount.setVisibility(view.VISIBLE);
 			totalAmount.setVisibility(view.VISIBLE);
@@ -86,7 +83,8 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 		}
 		itemCount.setText("(" + MainActivity.cart.getListItems().size() + ")");
 		totalAmount.setText("Total: $" + MainActivity.cart.getTotal());
-		lv1.setAdapter(new CartItemsArrayAdapter(getActivity(), R.layout.item_cart_line, MainActivity.cart.getListItems()));				
+		lv1.setAdapter(new CartItemsArrayAdapter(getActivity(),
+				R.layout.item_cart_line, MainActivity.cart.getListItems()));
 	}
 
 	@Override
@@ -94,19 +92,25 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 		// TODO Auto-generated method stub
 		if (v == btnCheckout) {
 			if (MainActivity.cart.getListItems().size() == 0) {
-				Toast.makeText(getActivity(), "Your cart is still empty. Go back and choose some stuffs", Toast.LENGTH_SHORT).show();
+				Toast.makeText(
+						getActivity(),
+						"Your cart is still empty. Go back and choose some stuffs",
+						Toast.LENGTH_SHORT).show();
 			} else {
-				if (Customer.customerLogin == null) {					
-					Toast.makeText(getActivity(), "You must login first to checkout!", Toast.LENGTH_SHORT).show();
+				if (Customer.customerLogin == null) {
+					Toast.makeText(getActivity(),
+							"You must login first to checkout!",
+							Toast.LENGTH_SHORT).show();
 					MainActivity.friendlyUrl = Constants.FRAGMENT_CHECKOUT;
 					Log.e("friendlyUrl", MainActivity.friendlyUrl + "");
 				} else {
-					Intent i = new Intent(view.getContext(), CheckoutActivity.class);
+					Intent i = new Intent(view.getContext(),
+							CheckoutActivity.class);
 					startActivity(i);
 				}
-				
+
 			}
-		} 
+		}
 	}
 
 }

@@ -133,15 +133,13 @@ public class CheckoutActivity extends Activity implements OnClickListener {
 
 			@Override
 			public void onSuccess(String response) {
-				// TODO Auto-generated method stub
-				Log.e("SUCCESS ORDER", "Success : " + response);
-//				MainActivity.cart.setListItems(null);
+				// TODO Auto-generated method stub				
 				MainActivity.cart.deleteAll();
 				Intent intent = new Intent(CheckoutActivity.this,
 						MainActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putString("res", Constants.CHECKOUT_SUCCESS);
-				intent.putExtra("message", bundle);
+				bundle.putString(Constants.MESSAGE_RES, Constants.CHECKOUT_SUCCESS);
+				intent.putExtra(Constants.MESSAGE, bundle);
 				startActivity(intent);
 			}
 		});
@@ -150,6 +148,6 @@ public class CheckoutActivity extends Activity implements OnClickListener {
 
 	private void showMessage(String msg) {
 		// TODO Auto-generated method stub
-		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 }

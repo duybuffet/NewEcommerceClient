@@ -108,10 +108,6 @@ public class GenreFragment extends Fragment {
 						Genre gen = new Genre();
 						gen.setId(Integer.parseInt(obj.getString("id")));
 						gen.setName(obj.getString("name"));
-//						cat.setCover(obj.getString("cover"));
-//						cat.setTotal(Integer.parseInt(obj.getString("total")));
-						// testData.add(obj.getString("name") + " ("
-						// + obj.getString("total") + ")");
 						listIds.add(obj.getInt("id"));
 						genres.add(gen);
 					}

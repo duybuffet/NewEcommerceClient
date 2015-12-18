@@ -1,12 +1,7 @@
 package com.ptit.bookecommerce.activity.view;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,19 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.ptit.bookecommerce.R;
-import com.ptit.bookecommerce.activity.adapter.ListBookAdapter;
-import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;
 import com.ptit.bookecommerce.utils.MyDialog;

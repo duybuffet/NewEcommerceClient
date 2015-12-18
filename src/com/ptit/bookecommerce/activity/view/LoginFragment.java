@@ -1,12 +1,10 @@
 package com.ptit.bookecommerce.activity.view;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,14 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.ptit.bookecommerce.R;
-import com.ptit.bookecommerce.activity.adapter.ListBookAdapter;
-import com.ptit.bookecommerce.model.Book;
 import com.ptit.bookecommerce.model.Customer;
 import com.ptit.bookecommerce.utils.Constants;
 import com.ptit.bookecommerce.utils.MyDialog;
@@ -54,11 +49,6 @@ public class LoginFragment extends Fragment implements OnClickListener {
 		super.onResume();
 
 	}
-
-	/* Profile components */
-	private EditText edFullname, edEmail, edPhone, edCity, edDistrict, edWard,
-			edStreetno, edPostal;
-	private Button btnChangeProfile;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -276,7 +266,6 @@ public class LoginFragment extends Fragment implements OnClickListener {
 		});
 	}
 	
-
 	private void showMessage(String msg) {
 		// TODO Auto-generated method stub
 		Toast.makeText(getActivity().getApplicationContext(), msg,
